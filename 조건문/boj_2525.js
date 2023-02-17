@@ -1,17 +1,13 @@
+// 강사님 풀이
 const fs = require("fs");
-const input = fs.readFileSync("./input.txt").toString().split("\n");
-let H = parseInt(input[0].slice(0, 2));
-let M = parseInt(input[0].slice(3, 5));
-let T = parseInt(input[1]);
-console.log(input);
-console.log(H, M, T);
-console.log(M + T);
-if (M + T >= 60) console.log(M + T);
-M = (M + T) % 60;
-H += parseInt((M + T) / 60);
-if (H > 23) H -= 24;
-else if (H === 24) H = 0;
-else M += T;
-console.log(H, M);
+const input = fs.readFileSync("/dev/stdin").toString().split("\n");
 
-// 아직 다 못 품
+let [a, b] = input[0].split(" ").map(Number);
+let c = Number(input[1]);
+
+let totalMinute = a * 60 + b + c; // 분의 형태로 바꾸기
+totalMinute %= 1440;
+let hour = parseInt(totalMinute / 60);
+let minute = totalMinute % 60;
+
+console.log(hour + " " + minute);
