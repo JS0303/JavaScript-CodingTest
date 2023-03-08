@@ -1,0 +1,36 @@
+// 내 풀이
+const fs = require("fs");
+const input = fs.readFileSync("/dev/stdin").toString().split("\n");
+
+let n = Number(input[0].split(" ")[0]);
+let k = Number(input[0].split(" ")[1]);
+let arr = input.slice(1).map(Number);
+let cnt = 0;
+for (let i = n - 1; i >= 0; i--) {
+  while (k >= arr[i]) {
+    k -= arr[i];
+  cnt += 1;
+  }
+}
+
+console.log(cnt);
+
+// 강사님 코드
+const fs = require("fs");
+const input = fs.readFileSync("/dev/stdin").toString().split("\n");
+
+let n = Number(input[0].split(" ")[0]); // 동전의 개수
+let k = Number(input[0].split(" ")[1]); // 만들어야 할 금액
+
+let arr = []
+// 전체 동전(화폐 단위) 데이터 입력
+for (let i = 1; i <= n; i++) arr.push(Number(input[i]))
+
+let cnt = 0;
+// 가치가 큰 동전부터 확인
+for (let i = n - 1; i >= 0; i--){
+  cnt += parseInt(k / arr[i]) // 해당 동전을 몇 개 사용해야 하는지 
+  k %= arr[i] // 해당 동전으로 모두 거슬러 준 뒤 남은 금액
+}
+
+console.log(cnt)
