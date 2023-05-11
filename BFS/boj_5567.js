@@ -1,4 +1,4 @@
-// 강사님 풀이
+// 강사님 풀이 ->  50번 라인 (for (let nextNode of graph[now]) {) 에서 graph[now] is not iterable error남
 class Queue {
   constructor() {
     this.items = {};
